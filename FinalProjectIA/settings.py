@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CSRF_TRUSTED_ORIGINS = ['https://detection-fraudulent-card-purchases.onrender.com/']
+CSRF_TRUSTED_ORIGINS = ['https://detection-fraudulent-card-purchases.onrender.com']
 
 
 
