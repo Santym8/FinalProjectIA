@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-ib2r#el($p7er@q+kpy=-c%_8!)4gk+$52v_uq(7sb@9lkp-6z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = ['https://detection-fraudulent-card-purchases.onrender.com/']
+
+
 
 
 # Application definition
