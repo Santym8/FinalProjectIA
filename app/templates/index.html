@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Credit Fraud</title>
+    <link rel="stylesheet" href="{% static 'app/styles.css' %}" />
+  </head>
+  <body>
+    <h1>Detection of Fraudulent Card Purchases</h1>
+    <div class="container">
+      <div class="form-container">
+        <h2>Form Data</h2> <!-- Título del formulario -->
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <div class="button-container">
+            <button type="submit">Send</button>
+          </div>
+        </form>
+      </div>
+      <div class="table-container">
+        <h2>Test Data</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Distance from Home</th>
+              <th>Distance from Last Transaction</th>
+              <th>Ratio to Median Purchase Price</th>
+              <th>Repeat Retailer</th>
+              <th>Used Chip</th>
+              <th>Used PIN Number</th>
+              <th>Online Order</th>
+              <th>Expected Result</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in data_list %}
+              <tr>
+                <td>{{ item.distance_from_home }}</td>
+                <td>{{ item.distance_from_last_transaction }}</td>
+                <td>{{ item.ratio_to_median_purchase_price }}</td>
+                <td>{{ item.repeat_retailer }}</td>
+                <td>{{ item.used_chip }}</td>
+                <td>{{ item.used_pin_number }}</td>
+                <td>{{ item.online_order }}</td>
+                <td>{{ item.fraud }}</td>
+                <td>
+                  <button type="button" onclick="loadData(this)">Load</button>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="resultModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="resultText"></p>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function loadData(button) {
+      var row = button.parentNode.parentNode
+      var cells = row.getElementsByTagName('td')
+      document.getElementById('id_distance_from_home').value = cells[0].textContent
+      document.getElementById('id_distance_from_last_transaction').value = cells[1].textContent
+      document.getElementById('id_ratio_to_median_purchase_price').value = cells[2].textContent
+      document.getElementById('id_repeat_retailer').value = cells[3].textContent
+      document.getElementById('id_used_chip').value = cells[4].textContent
+      document.getElementById('id_used_pin_number').value = cells[5].textContent
+      document.getElementById('id_online_order').value = cells[6].textContent
+      document.querySelector('form').submit();
+    }
+  </script>
+
+  <script>
+    // Cuando se carga la página
+    window.onload = function () {
+      // Verifica si hay un resultado
+      var result = '{{ fraud }}'
+      if (result) {
+        console.log(result)
+        showModal(result)
+      }
+    
+      // Obtén el modal
+      var modal = document.getElementById('resultModal')
+    
+      // Obtén el elemento que cierra el modal
+      var span = document.getElementsByClassName('close')[0]
+    
+      // Cuando el usuario hace clic en <span> (x), cierra el modal
+      span.onclick = function () {
+        modal.style.display = 'none'
+      }
+    
+      // Cuando el usuario hace clic en cualquier lugar fuera del modal, ciérralo
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = 'none'
+        }
+      }
+    }
+    
+    function showModal(result) {
+      var modal = document.getElementById('resultModal')
+      var modalContent = modal.querySelector('.modal-content')
+    
+      // Limpiar clases previas
+      modalContent.classList.remove('positive', 'negative')
+      let textResult = ''
+      // Establecer clase basada en el resultado
+      if (result == 'True') {
+        modalContent.classList.add('positive')
+        textResult = 'Fraud detected'
+      } else if (result == 'False') {
+        modalContent.classList.add('negative')
+        textResult = 'No fraud detected'
+      }
+    
+      document.getElementById('resultText').innerText = textResult
+      modal.style.display = 'block'
+    }
+  </script>
+</html>

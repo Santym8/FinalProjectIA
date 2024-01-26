@@ -1,0 +1,260 @@
+body h1 {
+    text-align: center;
+    /* Centrar el título */
+    color: #333;
+    /* Color del título */
+    margin-top: 20px;
+    /* Espacio en la parte superior */
+    margin-bottom: 20px;
+    /* Espacio antes del contenido */
+    font-size: 28px;
+    /* Tamaño del texto */
+    /* Otros estilos que desees aplicar (fuente, peso, etc.) */
+}
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-container {
+    flex: 1;
+    /* Ocupa una parte del espacio disponible */
+    padding: 10px;
+    /* Otros estilos... */
+}
+
+.table-container {
+    flex: 1.2;
+    /* Ocupa un poco más de espacio que el formulario */
+    padding: 10px;
+    /* Otros estilos... */
+    max-width: 120%;
+    /* Ajusta este valor según sea necesario */
+    width: auto;
+}
+
+/* -----------------------Table ------------------------*/
+/* Estilos generales para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: center;
+    /* Centrar el texto */
+    font-size: 14px;
+}
+
+th {
+    background-color: #f2f2f2;
+    /* Color pastel para el encabezado */
+    color: #333;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+    /* Color pastel para filas impares */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e9e9e9;
+    /* Color pastel para filas pares */
+}
+
+/* Hover efecto en filas */
+tbody tr:hover {
+    background-color: #f1f1f1;
+    /* Color ligeramente diferente en hover */
+}
+
+/* Estilo para botones dentro de la tabla */
+table button {
+    background-color: #4CAF50;
+    /* Verde */
+    color: white;
+    padding: 6px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table button:hover {
+    background-color: #45a049;
+}
+
+.table-container h2 {
+    text-align: center;
+    /* Centrar el título */
+    color: #333;
+    /* Color del título */
+    margin-bottom: 10px;
+    /* Espacio antes de la tabla */
+    font-size: 24px;
+    /* Tamaño del texto */
+    /* Otros estilos que desees aplicar (fuente, peso, etc.) */
+}
+
+/* ------------------------Form---------------------- */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    /* Asegura que padding y border no incrementen el ancho */
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    /* Centrar horizontalmente */
+    margin-top: 10px;
+    /* Espacio opcional por encima del botón */
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.form-container h2 {
+    text-align: center;
+    /* Centrar el título */
+    color: #333;
+    /* Color del título */
+    margin-bottom: 10px;
+    /* Espacio antes del formulario */
+    font-size: 24px;
+    /* Tamaño del texto */
+    /* Otros estilos que desees aplicar (fuente, peso, etc.) */
+}
+
+/* ---------------------------Modal--------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    /* Valor alto para asegurar que esté en la parte superior */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    /* Aumenta el margen superior para centrar */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 10%;
+    /* Tamaño más pequeño */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* Sombras para efecto de elevación */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    text-align: center;
+    /* Alineación del texto */
+    color: #333;
+    /* Color del texto */
+}
+
+/* Estilo para el mensaje del modal */
+#resultText {
+    font-size: 18px;
+    /* Tamaño del texto */
+    font-weight: bold;
+    /* Negrita para destacar */
+    margin-bottom: 20px;
+    /* Espacio debajo del texto */
+}
+
+/* Estilo para mensajes positivos y negativos */
+.modal-content.positive #resultText {
+    color: #D32F2F;
+    /* Color rojo para alertas positivas */
+}
+
+.modal-content.negative #resultText {
+    color: #388E3C;
+    /* Color verde para alertas negativas */
+}
+
+.modal-content.positive {
+    border-color: #ff4444;
+    /* Rojo para resultado positivo */
+    box-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.19);
+}
+
+.modal-content.negative {
+    border-color: #00C851;
+    /* Verde para resultado negativo */
+    box-shadow: 0 4px 8px 0 rgba(0, 200, 81, 0.2), 0 6px 20px 0 rgba(0, 200, 81, 0.19);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo para el texto del modal */
+.modal-content p {
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
