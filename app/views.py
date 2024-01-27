@@ -11,7 +11,6 @@ def index(request):
             data = form.to_np().reshape(1, -1)
             data = min_max_scaler.transform(data)
             data = data[:, :-1]
-
             fraud = model.predict(data).round()
             fraud = True if fraud == 1 else False
             return render(request, 'index.html', {
